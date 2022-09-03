@@ -19,57 +19,41 @@ function onLoad() {
         name_ = document.getElementById('name');
         title_ = document.getElementById('title');
 
-        setFirstSearchInterval_();
+        setSearchInterval_(firstTextString_, name_);
     } 
     
     function addBlinkingCursor_() {
         title_.innerHTML += '<span class="blinking">|</span>';
     }
 
-    function setFirstSearchInterval_() {
-        searchInterval_ = setInterval(findFirstMatchString_, searchSpeed_);
+    function setSearchInterval_(string, field) {
+        searchInterval_ = setInterval(() => {
+            findMatchString_(string, field);
+        }, searchSpeed_);
     }
 
-    function setSecondSearchInterval_() {
-        searchInterval_ = setInterval(findSecondMatchString_, searchSpeed_);
-    }
-
-    function findFirstMatchString_() {
-        if (finalTextIndex_ === firstTextString_.length) {
+    function findMatchString_(textString, field) {
+        if (finalTextIndex_ === textString.length) {
             finalTextIndex_ = 0;
             curTextProgress_ = '';
             clearInterval(searchInterval_);
-            setSecondSearchInterval_();
+
+            if (title_.innerHTML === '') {
+                setSearchInterval_(secondTextString_, title_);
+            } else {
+                addBlinkingCursor_();
+            }
+
             return;
         }
 
-        if (randomStr_.charAt(randomStrIndex_) === firstTextString_.charAt(finalTextIndex_)) {
-            curTextProgress_ += firstTextString_.charAt(finalTextIndex_);
-            name_.innerHTML = curTextProgress_;
+        if (randomStr_.charAt(randomStrIndex_) === textString.charAt(finalTextIndex_)) {
+            curTextProgress_ += textString.charAt(finalTextIndex_);
+            field.innerHTML = curTextProgress_;
             finalTextIndex_++;
             randomStrIndex_ = 0;
         } else {
-            name_.innerHTML = curTextProgress_ + randomStr_.charAt(randomStrIndex_);
-            randomStrIndex_++;
-        }
-    }
-
-    function findSecondMatchString_() {
-        if (finalTextIndex_ === secondTextString_.length) {
-            finalTextIndex_ = 0;
-            curTextProgress_ = '';
-            clearInterval(searchInterval_);
-            addBlinkingCursor_();
-            return;
-        }
-
-        if (randomStr_.charAt(randomStrIndex_) === secondTextString_.charAt(finalTextIndex_)) {
-            curTextProgress_ += secondTextString_.charAt(finalTextIndex_);
-            title_.innerHTML = curTextProgress_;
-            finalTextIndex_++;
-            randomStrIndex_ = 0;
-        } else {
-            title_.innerHTML = curTextProgress_ + randomStr_.charAt(randomStrIndex_);
+            field.innerHTML = curTextProgress_ + randomStr_.charAt(randomStrIndex_);
             randomStrIndex_++;
         }
     }
