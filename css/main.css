@@ -125,6 +125,7 @@ body {
 .showcase-container {
     display: flex;
     height: 100%;
+    padding-top: 10px;
     width: 100%;
 }
 
@@ -133,7 +134,8 @@ body {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding-top: 2.5em;
+    padding: 2.5em 0;
+    
 }
 
 .showcase-container img {
@@ -148,7 +150,7 @@ body {
     100% {opacity: 0}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 641px) {
     html, 
     body {
         padding-left: 15px;
@@ -162,5 +164,9 @@ body {
 
     .navigation-container {
         display: none;
+    }
+
+    .showcase-content {
+        justify-content: space-evenly;
     }
 }
