@@ -67,11 +67,14 @@ body {
 
 .navigation-container {
     align-items: center;
+    background-color: var(--bg-color);
     display: flex;
     flex-direction: row;
+    height: 50px;
     justify-content: flex-end;
     left: 50%;
     position: fixed;
+    top: 0;
     transform: translateX(-50%);
     width: 50%;
 }
