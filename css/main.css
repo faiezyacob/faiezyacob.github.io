@@ -33,7 +33,7 @@ h5 {
     font-size: 1em;
 }
 
-h6 {
+p {
     color: var(--third-color);
     font-size: 1em;
     padding-top: 1.5em;
@@ -122,17 +122,26 @@ body {
 }
 
 .blinking {
-    animation: blinking 1s infinite;
+    animation: blinking .75s infinite;
 }
 
 .btn-primary {
-    background-color: transparent;
     color: var(--secondary-color);
     border: 1px solid var(--secondary-color);
     border-radius: 10px;
     cursor: pointer;
     margin-top: 2.5em;
-    padding: 10px 50px;
+    padding: 10px 40px;
+    background: linear-gradient(to right, var(--secondary-color) 50%, var(--bg-color) 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: .5s;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    background-position: left bottom;
+    color: var(--bg-color);
 }
 
 .showcase-container {
@@ -157,7 +166,21 @@ body {
 }
 
 .highlight {
+    background: linear-gradient(to right, var(--secondary-color) 50%, var(--bg-color) 50%);
+    background-size: 250% 100%;
+    background-position: right bottom;
     color: var(--secondary-color);
+    transition: .75s;
+    width: 0;
+}
+
+.highlight:hover {
+    background-color: var(--secondary-color);
+    background-position: left bottom;
+    border-radius: 5px;
+    color: var(--bg-color);
+    cursor: pointer;
+    padding: 0 5px;
 }
 
 @keyframes blinking {
@@ -166,7 +189,7 @@ body {
     100% {opacity: 0}
 }
 
-@media screen and (max-width: 641px) {
+@media screen and (max-width: 480px) {
     html, 
     body {
         padding-left: 15px;
