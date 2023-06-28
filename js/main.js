@@ -10,7 +10,7 @@ function onLoad() {
 	let camera_ = null;
 	let renderer_ = null;
 	let scene_ = null;
-	
+
 	const ROTATION_SPEED = 0.025;
 
 	initClass_();
@@ -24,6 +24,7 @@ function onLoad() {
 		initRenderer_();
 		initCamera_();
 		initBoxGeometry_();
+		initScrollSpy_();
 		bindEvents_();
 
 		new OrbitControls(camera_, renderer_.domElement);
@@ -31,8 +32,17 @@ function onLoad() {
 		animate_();
 	}
 
+	function animate_() {
+		requestAnimationFrame(animate_);
+		cube_.rotation.y += ROTATION_SPEED;
+		cube2_.rotation.y += ROTATION_SPEED;
+		cube2_.rotation.x += ROTATION_SPEED;
+		renderer_.render(scene_, camera_);
+	}
+
 	function bindEvents_() {
 		window.addEventListener('resize', onResize_);
+		document.addEventListener('scroll', onScroll_, { passive: true });
 	}
 
 	function initRenderer_() {
@@ -51,11 +61,9 @@ function onLoad() {
 	function initBoxGeometry_() {
 		let geometry = new THREE.BoxGeometry(10, 10, 10);
 		let material = new THREE.MeshPhongMaterial({ color: 0x229e8d });
-		let geometry2 = new THREE.BoxGeometry(5, 5, 5);
-		let material2 = new THREE.MeshPhongMaterial({ color: 0x229e8d });
 
 		cube_ = new THREE.Mesh(geometry, material);
-		cube2_ = new THREE.Mesh(geometry2, material2);
+		cube2_ = cube_.clone();
 
 		cube_.receiveShadow = true;
 		cube2_.castShadow = true;
@@ -63,13 +71,14 @@ function onLoad() {
 
 		cube_.position.set(-3, 0, 0);
 		cube2_.position.set(2, 0, 10);
+		cube2_.scale.set(0.5, 0.5, 0.5);
 
 		scene_.add(cube_);
 		scene_.add(cube2_);
 	}
 
 	function initAmbientLight_() {
-		const light = new THREE.AmbientLight(0x999999); 
+		const light = new THREE.AmbientLight(0x999999);
 		scene_.add(light);
 	}
 
@@ -89,17 +98,28 @@ function onLoad() {
 		scene_.add(lightHelper);
 	}
 
+	function initScrollSpy_() {
+		const options = {
+			sectionClass: 'section',           // Query selector to your sections
+			menuActiveTarget: '.nav-link',       // Query selector to your elements that will be added `active` class
+			offset: 100,                          // Menu item will active before scroll to a matched section 100px
+		}
+
+		scrollSpy('#nav', options)
+	}
+
 	function onResize_() {
 		renderer_.setSize(canvas_.clientWidth, canvas_.clientHeight);
 		camera_.aspect = canvas_.clientWidth / canvas_.clientHeight;
 		camera_.updateProjectionMatrix();
 	}
 
-	function animate_() {
-		requestAnimationFrame(animate_);
-		cube_.rotation.y += ROTATION_SPEED;
-		cube2_.rotation.y += ROTATION_SPEED;
-		cube2_.rotation.x += ROTATION_SPEED;
-		renderer_.render(scene_, camera_);
+	function onScroll_() {
+		let navContainer = document.querySelector('.navigation-container');
+		if (window.scrollY > 0) {
+			navContainer.classList.add('scroll');
+		} else {
+			navContainer.classList.remove('scroll');
+		}
 	}
 }
