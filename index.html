@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
-		<title>/FY</title>
-		<link rel="stylesheet" href="css/main.css">
-		<script src="js/main.js"></script>
-    </head>
-    <body>
-        <div class="navigation-container">
-			<div class="logo"><a href="#"><span class="path">/</span>FY</a></div>
-			<div class="nav-links">
-				<a href="#"><div class="nav-link"><span class="path">/</span>about</div></a>
-				<a href="#showcase"><div class="nav-link"><span class="path">/</span>showcase</div></a>
-				<div class="nav-link"><span class="path">/</span>contact</div>
-			</div>
-		</div>
-		<div id="about" class="about-container">
-			<div class="content">
-				<h5>Hi, i am</h5>
-				<h1 id="name">Faiez Yacob</h1>
-				<h2 id="title">A hobbyist programmer<span class="blinking">|</span></h2>
-				<p>A hobbyist programmer who's keen to explore new technologies. I’m interested in web development (front end or back end). 
-					I spent my time mostly working on HTML, CSS & Javascript and help to maintain PHP (Laravel) development.
-					I have worked on project using <a href="https://ar-js-org.github.io/AR.js-Docs/" target="_blank"><span class="highlight">AR.js</span></a>, <a href="https://threejs.org" target="_blank"><span class="highlight">THREE.js</span></a> for Augmented Reality and 3D ads development.
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+	<title>/FY</title>
+	<link rel="stylesheet" href="css/main.css">
+
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "https://unpkg.com/three@0.153.0/build/three.module.js",
+				"three/addons/": "https://unpkg.com/three@0.153.0/examples/jsm/"
+			}
+		}
+	</script>
+	<script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+	<nav class="navigation-container">
+		<a class="nav-link active" href="#">./home</a>
+		<a class="nav-link" href="#">./showcase</a>
+		<a class="nav-link" href="#">./contact</a>
+	</nav>
+	<section id="about" class="about-container">
+		<div class="content">
+			<h5>Hi, i am</h5>
+			<h1 class="section-title">Faiez Yacob</h1>
+			<h1 class="section-title">A <span class="highlight">hobbyist</span> programmer<span
+					class="blinking">.</span></h2>
+				<p class="section-content"><span class="highlight">[ˈhäbēəst]</span> — A hobbyist programmer
+					who's keen to explore new technologies and mainly focus on web development. Work on 3D and AR
+					development using libraries such as THREE.js and AR.js.
 				</p>
 				<a href="#showcase"><button id="view-more" class="btn-primary">Learn more</button></a>
-			</div>
 		</div>
-		<div id="showcase" class="showcase-container">
-			<div class="content">
-				<h3><span class="path">/</span>showcase <i>[WIP]</i></h3>
-				<div class="showcase-content">
-					<img src="img/1.jpg">
-					<img src="img/1.jpg">
-					<img src="img/1.jpg">
-					<img src="img/1.jpg">
-				</div>
-			</div>
-		</div>
-    </body>
+		<canvas class="canvas-container"></canvas>
+	</section>
+</body>
+
 </html>
