@@ -100,9 +100,9 @@ function onLoad() {
 
 	function initScrollSpy_() {
 		const options = {
-			sectionClass: 'section',           // Query selector to your sections
-			menuActiveTarget: '.nav-link',       // Query selector to your elements that will be added `active` class
-			offset: 100,                          // Menu item will active before scroll to a matched section 100px
+			sectionClass: 'section',    
+			menuActiveTarget: '.nav-link',
+			offset: 100
 		}
 
 		scrollSpy('#nav', options)
