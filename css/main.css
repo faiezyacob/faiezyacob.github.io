@@ -101,10 +101,12 @@ section {
 .about-container {
 }
 .about-container .content {
-    min-width: 500px;
+    /* min-width: 500px; */
+    /* flex: 50%; */
 }
 .about-container .canvas-container {
-    min-width: 500px;
+    /* min-width: 500px; */
+    /* flex: 50%; */
 }
 .about-container .section-title {
     font-family: Arial, Helvetica, sans-serif;
@@ -162,11 +164,21 @@ section {
         min-width: 100vw;
         padding: 25px;
     }
+    .about-container .section-title {
+        font-size: 3.2em;
+    }
+
     .canvas-container {
         display: none;
     }
 
     .navigation-container {
         font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .about-container {
+        flex-direction: column;
     }
 }
