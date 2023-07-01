@@ -194,6 +194,9 @@ section .section-content {
         min-width: 100vw;
         padding: 25px;
     }
+    section .section-content {
+        font-size: 0.8em;
+    }
     section .section-title {
         font-size: 2.2em;
     }
