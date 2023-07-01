@@ -56,7 +56,7 @@ function onLoad() {
 
 	function initCamera_() {
 		camera_ = new THREE.PerspectiveCamera(50, canvas_.clientWidth / canvas_.clientHeight, 0.1, 1000);
-		camera_.position.set(-5, 0, 20);
+		camera_.position.set(0, 0, 20);
 	}
 
 	function initBoxGeometry_() {
