@@ -25,9 +25,10 @@ function onLoad() {
 		initCamera_();
 		initBoxGeometry_();
 		initScrollSpy_();
+		initSwiper_();
 		bindEvents_();
 
-		new OrbitControls(camera_, renderer_.domElement);
+		// new OrbitControls(camera_, renderer_.domElement);
 
 		animate_();
 	}
@@ -55,7 +56,7 @@ function onLoad() {
 
 	function initCamera_() {
 		camera_ = new THREE.PerspectiveCamera(50, canvas_.clientWidth / canvas_.clientHeight, 0.1, 1000);
-		camera_.position.set(-18, 0, 15);
+		camera_.position.set(-5, 0, 20);
 	}
 
 	function initBoxGeometry_() {
@@ -106,6 +107,43 @@ function onLoad() {
 		}
 
 		scrollSpy('#nav', options)
+	}
+
+	function initSwiper_() {
+		const swiper = new Swiper('.swiper', {
+			// Optional parameters
+			direction: 'horizontal',
+			loop: true,
+			centeredSlides: true,
+			slidesPerView: 1,
+			spaceBetween: 10,
+			loopedSlides: 2,
+		  
+			// If we need pagination
+			pagination: {
+			  el: '.swiper-pagination',
+			},
+		  
+			// Navigation arrows
+			navigation: {
+			  nextEl: '.swiper-button-next',
+			  prevEl: '.swiper-button-prev',
+			},
+		  
+			// And if we need scrollbar
+			scrollbar: {
+			  el: '.swiper-scrollbar',
+			},
+
+			breakpoints: {
+				480: {
+					slidesPerView: 2
+				},
+				800: {
+					slidesPerView: 3
+				}
+			}
+		  });
 	}
 
 	function onResize_() {
