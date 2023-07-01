@@ -69,7 +69,6 @@ body {
     border-radius: var(--border-radius);
     border: 1px solid var(--secondary-color);
     top: 15px;
-    /* top: calc(100vh - 50px); */
 }
 .navigation-container .nav-link {
     background: linear-gradient(to right, var(--secondary-color) 50%, var(--bg-color) 50%);
@@ -77,7 +76,6 @@ body {
     background-position: right bottom;
     border-radius: var(--border-radius);
     transition: all var(--transition-time) ease;
-    /* padding: 0 25px; */
     text-align: center;
     width: 150px;
 }
@@ -122,12 +120,11 @@ section .section-content {
     flex-direction: column;
 }
 .showcase-container .swiper {
-    width: 800px;
+    width: 750px;
 }
 .showcase-container .swiper-slide {
     border-radius: var(--border-radius);
     height: 250px;
-    /* margin: 10px; */
     width: 250px;
 }
 
@@ -185,7 +182,7 @@ section .section-content {
     }
 
     .showcase-container .swiper {
-        width: 600px;
+        width: 500px;
     }
 }
 
@@ -211,7 +208,7 @@ section .section-content {
     }
 
     .showcase-container .swiper {
-        width: 300px;
+        width: 250px;
     }
 
     .navigation-container {
