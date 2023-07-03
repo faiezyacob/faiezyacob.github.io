@@ -6,7 +6,7 @@
     --secondary-color: #32d9c2;
     --third-color: #c6c6c6;
 
-    --border-radius: 10px;
+    --border-radius: 15px;
     --transition-time: .5s;
 }
 
@@ -53,38 +53,37 @@ body {
 }
 
 .navigation-container {
-    background-color: var(--bg-color);
-    border: 1px solid var(--bg-color);
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 0 1.5px var(--bg-color);
     display: flex;
     justify-content: space-evenly;
     left: 50%;
-    padding: 10px 5px;
+    padding: 10px;
     position: fixed;
     transform: translateX(-50%);
     transition: all var(--transition-time) ease;
-    top: 0;
+    top: 15px;
     z-index: 99;
 }
-.navigation-container.scroll {
-    border-radius: var(--border-radius);
-    border: 1px solid var(--secondary-color);
-    top: 15px;
-}
 .navigation-container .nav-link {
-    background: linear-gradient(to right, var(--secondary-color) 50%, var(--bg-color) 50%);
-    background-size: 220% 100%;
-    background-position: right bottom;
     border-radius: var(--border-radius);
-    transition: all var(--transition-time) ease;
+    color: var(--bg-color);
     text-align: center;
-    width: 150px;
+    transition: all var(--transition-time) ease;
+    width: 100px;
 }
 .navigation-container .nav-link.active {
-    background-position: left bottom;
+    background-color: #fff;
     color: var(--bg-color);
 }
+.navigation-container .nav-link.notactive {
+    background-color: var(--secondary-color);
+}
 .navigation-container .nav-link:hover {
-    color: var(--secondary-color);
+    background-color: #fff;
+    color: var(--bg-color)
+    /* color: var(--secondar); */
 }
 .navigation-container .nav-link.active.nav-link:hover {
     color: var(--bg-color);
@@ -150,6 +149,14 @@ section .section-content {
     color: var(--bg-color);
 }
 
+/* -- SwiperJS -- */
+
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-color);
+}
+
+/* -- Animation -- */
+
 @keyframes blinking {
     0% {
         opacity: 0
@@ -163,6 +170,8 @@ section .section-content {
         opacity: 0
     }
 }
+
+/* -- Media query -- */
 
 @media screen and (max-width: 800px) {
     section {
@@ -208,9 +217,5 @@ section .section-content {
 
     .showcase-container .swiper {
         width: 250px;
-    }
-
-    .navigation-container {
-        font-size: 0.8rem;
     }
 }

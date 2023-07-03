@@ -8,6 +8,7 @@ function onLoad() {
 	let cube_ = null;
 	let cube2_ = null;
 	let camera_ = null;
+	let navEls_ = null;
 	let renderer_ = null;
 	let scene_ = null;
 
@@ -16,6 +17,7 @@ function onLoad() {
 	initClass_();
 
 	function initClass_() {
+		navEls_ = document.querySelectorAll('.nav-link');
 		canvas_ = document.querySelector('.canvas-container');
 		scene_ = new THREE.Scene();
 
@@ -26,9 +28,8 @@ function onLoad() {
 		initBoxGeometry_();
 		initScrollSpy_();
 		initSwiper_();
+		onScroll_();
 		bindEvents_();
-
-		// new OrbitControls(camera_, renderer_.domElement);
 
 		animate_();
 	}
@@ -42,8 +43,15 @@ function onLoad() {
 	}
 
 	function bindEvents_() {
-		window.addEventListener('resize', onResize_);
 		document.addEventListener('scroll', onScroll_, { passive: true });
+		window.addEventListener('resize', onResize_);
+
+		navEls_.forEach((navEl) => {
+			navEl.addEventListener('mouseover', onNavElMouseOver_);
+		})
+		navEls_.forEach((navEl) => {
+			navEl.addEventListener('mouseout', onNavElMouseOut_);
+		})
 	}
 
 	function initRenderer_() {
@@ -129,11 +137,6 @@ function onLoad() {
 			  nextEl: '.swiper-button-next',
 			  prevEl: '.swiper-button-prev',
 			},
-		  
-			// And if we need scrollbar
-			scrollbar: {
-			  el: '.swiper-scrollbar',
-			},
 
 			breakpoints: {
 				480: {
@@ -146,18 +149,25 @@ function onLoad() {
 		  });
 	}
 
+	function onNavElMouseOver_() {
+		if (this.classList.contains('active')) return;
+
+		navEls_.forEach((el) => {
+			el.classList.add('notactive');
+		})
+	}
+
+	function onNavElMouseOut_() {
+		navEls_.forEach((el) => {
+			el.classList.remove('notactive');
+		})
+	}
+
 	function onResize_() {
 		renderer_.setSize(canvas_.clientWidth, canvas_.clientHeight);
 		camera_.aspect = canvas_.clientWidth / canvas_.clientHeight;
 		camera_.updateProjectionMatrix();
 	}
 
-	function onScroll_() {
-		let navContainer = document.querySelector('.navigation-container');
-		if (window.scrollY > 0) {
-			navContainer.classList.add('scroll');
-		} else {
-			navContainer.classList.remove('scroll');
-		}
-	}
+	function onScroll_() {}
 }
