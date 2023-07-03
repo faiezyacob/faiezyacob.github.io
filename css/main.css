@@ -195,10 +195,7 @@ section .section-content {
         padding: 25px;
     }
     section .section-content {
-        font-size: 0.8em;
-    }
-    section .section-title {
-        font-size: 2.2em;
+        /* font-size: 0.8em; */
     }
 
     .navigation-container .nav-link {
@@ -206,8 +203,7 @@ section .section-content {
     }
 
     .about-container .canvas-container {
-        min-width: auto;
-        min-height: 150px;
+        display: none;
     }
 
     .showcase-container .swiper {
