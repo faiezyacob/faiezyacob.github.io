@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
-	<title>/FY</title>
+	<title>Faiez Yacob</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="css/main.css">
 
@@ -27,6 +27,7 @@
 		<a class="nav-link active" href="#about">home</a>
 		<a class="nav-link" href="#showcase">showcase</a>
 		<a class="nav-link" href="#contact">contact</a>
+		<div class="slider">
 	</nav>
 	<section id="about" class="about-container">
 		<div class="content">
@@ -43,23 +44,35 @@
 		<canvas class="canvas-container"></canvas>
 	</section>
 	<section id="showcase" class="showcase-container">
+		<div class="swiper-container">
+			<div class="swiper">
+				<div class="swiper-wrapper">
+					<img class="swiper-slide" src="img/1.jpg">
+					<img class="swiper-slide" src="img/1.jpg">
+					<img class="swiper-slide" src="img/1.jpg">
+				</div>
+				<!-- <div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div> -->
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
 		<div class="content">
 			<h1 class="section-title">Showcase</h1>
-			<p class="section-content"><span class="highlight">[ˈʃəʊkeɪs]</span> — These are the projects i've been
-				working on for these past few years. These projects include freelance and free time project.</p>
-		</div>
-		<div class="swiper">
-			<div class="swiper-wrapper">
-				<img class="swiper-slide" src="img/1.jpg">
-				<img class="swiper-slide" src="img/1.jpg">
-				<img class="swiper-slide" src="img/1.jpg">
-				<img class="swiper-slide" src="img/1.jpg">
-				<img class="swiper-slide" src="img/1.jpg">
-				<img class="swiper-slide" src="img/1.jpg">
-			</div>
-			<div class="swiper-pagination"></div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
+			<p class="section-content active" data-index="0">
+				<span class="highlight">[First project]</span> — Lorem ipsum dolor sit amet consectetur adipisicing
+				elit. Vitae ea necessitatibus alias nam ex aut officia sit porro voluptatum, nisi, molestiae illo id
+				magni voluptate labore quaerat error nihil illum.
+			</p>
+			<p class="section-content" data-index="1">
+				<span class="highlight">[Second project]</span> — Lorem ipsum dolor sit amet consectetur adipisicing
+				elit. Vitae ea necessitatibus alias nam ex aut officia sit porro voluptatum, nisi, molestiae illo id
+				magni voluptate labore quaerat error nihil illum.
+			</p>
+			<p class="section-content" data-index="2">
+				<span class="highlight">[Third project]</span> — Lorem ipsum dolor sit amet consectetur adipisicing
+				elit. Vitae ea necessitatibus alias nam ex aut officia sit porro voluptatum, nisi, molestiae illo id
+				magni voluptate labore quaerat error nihil illum.
+			</p>
 		</div>
 	</section>
 	<section id="contact" class="contact-container">

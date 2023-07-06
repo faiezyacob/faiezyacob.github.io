@@ -4,11 +4,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 window.addEventListener('load', onLoad);
 
 function onLoad() {
+	let animSpeed_ = 3000;
 	let canvas_ = null;
 	let cube_ = null;
 	let cube2_ = null;
 	let camera_ = null;
-	let navEls_ = null;
 	let renderer_ = null;
 	let scene_ = null;
 
@@ -17,7 +17,6 @@ function onLoad() {
 	initClass_();
 
 	function initClass_() {
-		navEls_ = document.querySelectorAll('.nav-link');
 		canvas_ = document.querySelector('.canvas-container');
 		scene_ = new THREE.Scene();
 
@@ -45,13 +44,6 @@ function onLoad() {
 	function bindEvents_() {
 		document.addEventListener('scroll', onScroll_, { passive: true });
 		window.addEventListener('resize', onResize_);
-
-		navEls_.forEach((navEl) => {
-			navEl.addEventListener('mouseover', onNavElMouseOver_);
-		})
-		navEls_.forEach((navEl) => {
-			navEl.addEventListener('mouseout', onNavElMouseOut_);
-		})
 	}
 
 	function initRenderer_() {
@@ -120,47 +112,44 @@ function onLoad() {
 	function initSwiper_() {
 		const swiper = new Swiper('.swiper', {
 			// Optional parameters
-			direction: 'horizontal',
-			loop: true,
+			direction: 'vertical',
+			// loop: true,
 			centeredSlides: true,
 			slidesPerView: 1,
 			spaceBetween: 10,
-			loopedSlides: 2,
-		  
-			// If we need pagination
+			initialSlide: 1,
+			autoplay: {
+				delay: animSpeed_
+			},
+			on: {
+				slideChange: function() {
+					let contentEls = document.querySelectorAll('.showcase-container .section-content');
+					contentEls.forEach((el) => {
+						el.classList.remove('active');
+					})
+
+					let activeEl = document.querySelector(`p.section-content[data-index="${this.realIndex}"]`);
+					if (activeEl === null) {
+						return;
+					}
+
+					activeEl.classList.add('active');
+				}
+			},
 			pagination: {
 			  el: '.swiper-pagination',
+			  clickable: true,
+			  progressbarOpposite: true
 			},
-		  
-			// Navigation arrows
-			navigation: {
-			  nextEl: '.swiper-button-next',
-			  prevEl: '.swiper-button-prev',
-			},
-
 			breakpoints: {
 				480: {
 					slidesPerView: 2
 				},
 				800: {
-					slidesPerView: 3
+					slidesPerView: 2
 				}
 			}
 		  });
-	}
-
-	function onNavElMouseOver_() {
-		if (this.classList.contains('active')) return;
-
-		navEls_.forEach((el) => {
-			el.classList.add('notactive');
-		})
-	}
-
-	function onNavElMouseOut_() {
-		navEls_.forEach((el) => {
-			el.classList.remove('notactive');
-		})
 	}
 
 	function onResize_() {
@@ -169,5 +158,14 @@ function onLoad() {
 		camera_.updateProjectionMatrix();
 	}
 
-	function onScroll_() {}
+	function onScroll_() {
+		let container = document.querySelector('.about-container');
+		let nav = document.querySelector('.navigation-container');
+
+		if (container.getBoundingClientRect().top < 0) {
+			nav.classList.add('scrolling');
+		} else {
+			nav.classList.remove('scrolling');
+		}
+	}
 }
