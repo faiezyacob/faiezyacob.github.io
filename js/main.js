@@ -6,11 +6,13 @@ window.addEventListener('load', onLoad);
 function onLoad() {
 	let animSpeed_ = 3000;
 	let canvas_ = null;
-	let cube_ = null;
-	let cube2_ = null;
+	let curPos_ = 0;
+	let group_ = null;
 	let camera_ = null;
 	let renderer_ = null;
 	let scene_ = null;
+
+	let isRotateLeft_ = true;
 
 	const ROTATION_SPEED = 0.025;
 
@@ -30,14 +32,15 @@ function onLoad() {
 		onScroll_();
 		bindEvents_();
 
+		// new OrbitControls( camera_, renderer_.domElement );
+
 		animate_();
 	}
 
 	function animate_() {
 		requestAnimationFrame(animate_);
-		cube_.rotation.y += ROTATION_SPEED;
-		cube2_.rotation.y += ROTATION_SPEED;
-		cube2_.rotation.x += ROTATION_SPEED;
+		let rotate = getRotateDirection_();
+		group_.rotation.y = rotate;
 		renderer_.render(scene_, camera_);
 	}
 
@@ -46,36 +49,61 @@ function onLoad() {
 		window.addEventListener('resize', onResize_);
 	}
 
+	function getRotateDirection_() {
+		if (isRotateLeft_ === true) {
+			curPos_ -= ROTATION_SPEED;
+		} else {
+			curPos_ += ROTATION_SPEED;
+		}
+
+		if (curPos_ < -0.5) {
+			isRotateLeft_ = false;
+		}
+
+		if (curPos_ > 0.5) {
+			isRotateLeft_ = true;
+		}
+
+		return curPos_;
+	}
+
 	function initRenderer_() {
 		renderer_ = new THREE.WebGLRenderer({ canvas: canvas_, antialias: true });
 		renderer_.setSize(canvas_.clientWidth, canvas_.clientHeight);
 		renderer_.shadowMap.enabled = true;
 		renderer_.shadowMap.type = THREE.VSMShadowMap;
+		// renderer_.setClearColor(0xffffff, 0);
 		renderer_.setClearColor(0xb0b0b0, 0);
 	}
 
 	function initCamera_() {
 		camera_ = new THREE.PerspectiveCamera(50, canvas_.clientWidth / canvas_.clientHeight, 0.1, 1000);
-		camera_.position.set(0, 0, 20);
+		camera_.position.set(0, 0, 25);
 	}
 
 	function initBoxGeometry_() {
-		let geometry = new THREE.BoxGeometry(10, 10, 10);
+		let geometry = new THREE.BoxGeometry(10, 10, 0.5);
 		let material = new THREE.MeshPhongMaterial({ color: 0x229e8d });
 
-		cube_ = new THREE.Mesh(geometry, material);
-		cube2_ = cube_.clone();
+		let leftWall = new THREE.Mesh(geometry, material);
+		let rightWall = leftWall.clone();
+		let bottomWall = leftWall.clone();
 
-		cube_.receiveShadow = true;
-		cube2_.castShadow = true;
-		cube2_.receiveShadow = true;
+		leftWall.receiveShadow = true;
+		rightWall.receiveShadow = true;
+		bottomWall.receiveShadow = true;
 
-		cube_.position.set(-3, 0, 0);
-		cube2_.position.set(2, 0, 10);
-		cube2_.scale.set(0.5, 0.5, 0.5);
+		leftWall.position.set(0, 0, 0);
+		rightWall.position.set(4.7, 0, 4.7);
+		rightWall.rotation.y = Math.PI / 2;
+		bottomWall.rotation.x = Math.PI / 2;
+		bottomWall.position.set(0, -5, 4.7);
 
-		scene_.add(cube_);
-		scene_.add(cube2_);
+		group_ = new THREE.Object3D();
+		group_.add(leftWall);
+		group_.add(rightWall);
+		group_.add(bottomWall);
+		scene_.add(group_);
 	}
 
 	function initAmbientLight_() {
@@ -85,7 +113,7 @@ function onLoad() {
 
 	function initDirectionalLight_() {
 		const light = new THREE.DirectionalLight()
-		light.position.set(4, 2, 20)
+		light.position.set(-15, 2, 20)
 		light.castShadow = true
 		light.shadow.mapSize.width = 256
 		light.shadow.mapSize.height = 256
@@ -95,8 +123,8 @@ function onLoad() {
 		light.shadow.blurSamples = 16
 		scene_.add(light)
 
-		const lightHelper = new THREE.DirectionalLightHelper(light, 0.5);
-		scene_.add(lightHelper);
+		// const lightHelper = new THREE.DirectionalLightHelper(light, 0.5);
+		// scene_.add(lightHelper);
 	}
 
 	function initScrollSpy_() {
@@ -113,14 +141,10 @@ function onLoad() {
 		const swiper = new Swiper('.swiper', {
 			// Optional parameters
 			direction: 'vertical',
-			// loop: true,
 			centeredSlides: true,
 			slidesPerView: 1,
 			spaceBetween: 10,
 			initialSlide: 1,
-			autoplay: {
-				delay: animSpeed_
-			},
 			on: {
 				slideChange: function() {
 					let contentEls = document.querySelectorAll('.showcase-container .section-content');
