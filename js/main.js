@@ -26,21 +26,23 @@ function onLoad() {
 		initDirectionalLight_();
 		initRenderer_();
 		initCamera_();
-		initBoxGeometry_();
+		// initBoxGeometry_();
+		initSphereGeometry_();
 		initScrollSpy_();
 		initSwiper_();
 		onScroll_();
 		bindEvents_();
 
-		// new OrbitControls( camera_, renderer_.domElement );
+		// new OrbitControls(camera_, renderer_.domElement);
 
 		animate_();
 	}
 
 	function animate_() {
 		requestAnimationFrame(animate_);
-		let rotate = getRotateDirection_();
-		group_.rotation.y = rotate;
+		// let rotate = getRotateDirection_();
+		group_.rotation.x += 0.005;
+		group_.rotation.y += 0.005;
 		renderer_.render(scene_, camera_);
 	}
 
@@ -106,6 +108,20 @@ function onLoad() {
 		scene_.add(group_);
 	}
 
+	function initSphereGeometry_() {
+		const geometry = new THREE.SphereGeometry(10, 32, 16);
+		// const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } ); 
+		// const sphere = new THREE.Mesh( geometry, material ); 
+		const wireframe = new THREE.WireframeGeometry(geometry);
+		const line = new THREE.LineSegments(wireframe);
+		line.material.depthTest = false;
+		line.material.opacity = 0.25;
+		line.material.transparent = true;
+		group_ = new THREE.Object3D();
+		group_.add(line);
+		scene_.add(group_)
+	}
+
 	function initAmbientLight_() {
 		const light = new THREE.AmbientLight(0x999999);
 		scene_.add(light);
@@ -129,7 +145,7 @@ function onLoad() {
 
 	function initScrollSpy_() {
 		const options = {
-			sectionClass: 'section',    
+			sectionClass: 'section',
 			menuActiveTarget: '.nav-link',
 			offset: 100
 		}
@@ -146,7 +162,7 @@ function onLoad() {
 			spaceBetween: 10,
 			initialSlide: 1,
 			on: {
-				slideChange: function() {
+				slideChange: function () {
 					let contentEls = document.querySelectorAll('.showcase-container .section-content');
 					contentEls.forEach((el) => {
 						el.classList.remove('active');
@@ -161,9 +177,9 @@ function onLoad() {
 				}
 			},
 			pagination: {
-			  el: '.swiper-pagination',
-			  clickable: true,
-			  progressbarOpposite: true
+				el: '.swiper-pagination',
+				clickable: true,
+				progressbarOpposite: true
 			},
 			breakpoints: {
 				480: {
@@ -173,7 +189,7 @@ function onLoad() {
 					slidesPerView: 2
 				}
 			}
-		  });
+		});
 	}
 
 	function onResize_() {
