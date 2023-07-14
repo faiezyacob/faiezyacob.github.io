@@ -110,7 +110,7 @@ section {
     flex-direction: row;
     justify-content: center;
     height: 100%;
-    padding: 50px 15vw;
+    padding: 50px 10vw;
     width: 100%;
 }
 section .section-title {
@@ -126,13 +126,12 @@ section .section-content {
 
 .about-container .canvas-container {
     min-height: 250px;
-    min-width: 500px;
+    min-width: min(450px, 30vw);
 }
-
 
 .showcase-container {
     height: 100%;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
 }
 .showcase-container .swiper-container {
@@ -183,12 +182,17 @@ section .section-content {
 }
 
 /* -- SwiperJS -- */
+
+.swiper-slide {
+    cursor: pointer;
+}
+
 .swiper-pagination-bullet {
     background-color: var(--third-color);
     border-radius: var(--border-radius);
 }
 .swiper-pagination-bullet-active {
-    background-color: var(--secondary-color);
+    background-color: #fff;
     height: 20px;
 }
 
@@ -218,7 +222,8 @@ section .section-content {
         font-size: 2.8em;
     }
 
-    .about-container {
+    .about-container, 
+    .showcase-container {
         flex-direction: column;
     }
 
@@ -228,7 +233,8 @@ section .section-content {
     }
 
     .showcase-container .swiper {
-        width: 500px;
+        height: 375px;
+        width: 250px;
     }
 }
 
@@ -250,9 +256,5 @@ section .section-content {
 
     .about-container .canvas-container {
         display: none;
-    }
-
-    .showcase-container .swiper {
-        width: 250px;
     }
 }

@@ -110,10 +110,8 @@ function onLoad() {
 
 	function initSphereGeometry_() {
 		const geometry = new THREE.SphereGeometry(10, 32, 16);
-		// const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } ); 
-		// const sphere = new THREE.Mesh( geometry, material ); 
 		const wireframe = new THREE.WireframeGeometry(geometry);
-		const line = new THREE.LineSegments(wireframe);
+		const line = new THREE.LineSegments(wireframe, new THREE.LineBasicMaterial({color: 0x32d2c2}));
 		line.material.depthTest = false;
 		line.material.opacity = 0.25;
 		line.material.transparent = true;
@@ -158,9 +156,13 @@ function onLoad() {
 			// Optional parameters
 			direction: 'vertical',
 			centeredSlides: true,
-			slidesPerView: 1,
+			slidesPerView: 1.5,
 			spaceBetween: 10,
 			initialSlide: 1,
+			mousewheel: {
+				forceToAxis: true,
+				invert: false
+			},
 			on: {
 				slideChange: function () {
 					let contentEls = document.querySelectorAll('.showcase-container .section-content');
@@ -182,9 +184,6 @@ function onLoad() {
 				progressbarOpposite: true
 			},
 			breakpoints: {
-				480: {
-					slidesPerView: 2
-				},
 				800: {
 					slidesPerView: 2
 				}
