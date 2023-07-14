@@ -233,7 +233,7 @@ section .section-content {
     }
 
     .showcase-container .swiper {
-        height: 375px;
+        height: 300px;
         width: 250px;
     }
 }

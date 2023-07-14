@@ -156,7 +156,7 @@ function onLoad() {
 			// Optional parameters
 			direction: 'vertical',
 			centeredSlides: true,
-			slidesPerView: 1.5,
+			slidesPerView: 1.2,
 			spaceBetween: 10,
 			initialSlide: 1,
 			mousewheel: {
