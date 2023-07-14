@@ -154,9 +154,9 @@ function onLoad() {
 	function initSwiper_() {
 		const swiper = new Swiper('.swiper', {
 			// Optional parameters
-			direction: 'vertical',
+			direction: 'horizontal',
 			centeredSlides: true,
-			slidesPerView: 1.2,
+			slidesPerView: 1.5,
 			spaceBetween: 10,
 			initialSlide: 1,
 			mousewheel: {
@@ -185,6 +185,7 @@ function onLoad() {
 			},
 			breakpoints: {
 				800: {
+					direction: 'vertical',
 					slidesPerView: 2
 				}
 			}

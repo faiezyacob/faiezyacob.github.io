@@ -232,22 +232,26 @@ section .section-content {
         min-height: 200px;
     }
 
+    .showcase-container .swiper-container {
+        width: 500px;
+    }
+
     .showcase-container .swiper {
-        height: 300px;
-        width: 250px;
+        height: 250px;
+        width: 375px;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #fff;
+        height: 7px;
+        width: 20px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    section {
-        padding: 10px 2.5rem;
-    }
-    section .content {
+    .content {
         min-width: 100vw;
         padding: 25px;
-    }
-    section .section-content {
-        /* font-size: 0.8em; */
     }
 
     .navigation-container .nav-link {
