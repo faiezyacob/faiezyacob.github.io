@@ -157,6 +157,19 @@ section .section-content {
     display: block;
 }
 
+.contact-container .social-icons {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+}
+.contact-container .social-icons a {
+    margin: 0 1.5rem;
+}
+.contact-container .social-icons img {
+    display: block;
+    width: 44px;
+}
+
 .blinking {
     animation: blinking .75s infinite;
 }
