@@ -186,7 +186,7 @@ function onLoad() {
 			breakpoints: {
 				800: {
 					direction: 'vertical',
-					slidesPerView: 2
+					slidesPerView: 3
 				}
 			}
 		});
