@@ -198,6 +198,7 @@ section .section-content {
 
 .swiper-slide {
     cursor: pointer;
+    object-fit: cover;
 }
 
 .swiper-pagination-bullet {

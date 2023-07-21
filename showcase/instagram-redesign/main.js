@@ -18,7 +18,6 @@ function onLoad() {
     }
 
     function onLikeBtnClick() {
-        console.log('ss');
         this.querySelector('svg').classList.toggle('fill-red-400')
         this.querySelector('svg').classList.toggle('stroke-0')
     }
