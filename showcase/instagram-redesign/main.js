@@ -2,9 +2,10 @@ window.addEventListener('load', onLoad)
 
 function onLoad() {
     let likeBtns = null
+    let lastTimeStamp = 0;
 
     initClass()
-    
+
     function initClass() {
         likeBtns = document.querySelectorAll('.like-btn')
         postImgs = document.querySelectorAll('.post-image')
@@ -18,7 +19,7 @@ function onLoad() {
         })
 
         postImgs.forEach((el) => {
-            el.addEventListener('dblclick', onPostImgDblClick);
+            el.addEventListener('click', onPostImgClick);
         })
     }
 
@@ -27,13 +28,24 @@ function onLoad() {
         this.querySelector('svg').classList.toggle('stroke-0')
     }
 
-    function onPostImgDblClick() {
-        this.querySelector('div.like-btn svg').classList.add('fill-red-400');
-        this.querySelector('div.like-btn svg').classList.add('stroke-0');
-        this.querySelector('.like-overlay').classList.add('opacity-100');
+    function postImageDblClick(event) {
+        event.querySelector('div.like-btn svg').classList.add('fill-red-400');
+        event.querySelector('div.like-btn svg').classList.add('stroke-0');
+        event.querySelector('.like-overlay').classList.add('opacity-100');
 
         setTimeout(() => {
-            this.querySelector('.like-overlay').classList.remove('opacity-100');
+            event.querySelector('.like-overlay').classList.remove('opacity-100');
         }, 1000)
+    }
+
+    function onPostImgClick() {
+        let now = new Date().getTime();
+        let currentTimeStamp = now - lastTimeStamp;
+
+        if ((currentTimeStamp < 600) && (currentTimeStamp > 0)) {
+            postImageDblClick(this);
+        }
+
+        lastTimeStamp = new Date().getTime();
     }
 }
