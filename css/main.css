@@ -131,7 +131,7 @@ section .section-content {
 
 .showcase-container {
     height: 100%;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
 }
 .showcase-container .swiper-container {
@@ -197,8 +197,10 @@ section .section-content {
 /* -- SwiperJS -- */
 
 .swiper-slide {
+    /* background-color: rgba(0, 0, 0, 0.25); */
+    border: 1px solid var(--secondary-color);
     cursor: pointer;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .swiper-pagination-bullet {
@@ -239,6 +241,10 @@ section .section-content {
     .about-container, 
     .showcase-container {
         flex-direction: column;
+    }
+
+    .showcase-container {
+        justify-content: space-evenly;
     }
 
     .about-container .canvas-container {
