@@ -28,7 +28,12 @@ function onLoad() {
     }
 
     function onPostImgDblClick() {
-        this.querySelector('div.like-btn svg').classList.toggle('fill-red-400');
-        this.querySelector('div.like-btn svg').classList.toggle('stroke-0');
+        this.querySelector('div.like-btn svg').classList.add('fill-red-400');
+        this.querySelector('div.like-btn svg').classList.add('stroke-0');
+        this.querySelector('.like-overlay').classList.add('opacity-100');
+
+        setTimeout(() => {
+            this.querySelector('.like-overlay').classList.remove('opacity-100');
+        }, 1000)
     }
 }
