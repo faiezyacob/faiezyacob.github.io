@@ -143,7 +143,12 @@ section .section-content {
 .showcase-container .swiper-slide {
     border-radius: var(--border-radius);
     height: 250px;
+    opacity: .5;
+    transition: opacity .5s ease-in-out;
     width: 250px;
+}
+.showcase-container .swiper-slide.swiper-slide-active {
+    opacity: 1;
 }
 .showcase-container .content {
     padding: 0 25px;
