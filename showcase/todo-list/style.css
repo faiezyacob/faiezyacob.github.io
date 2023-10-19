@@ -20,14 +20,12 @@ body {
 }
 
 button {
-    --font-size: 0.9em;
-
     background-color: var(--bg-color);
     border: 1px solid #000;
     border-radius: 20px;
     color: #000;
     cursor: pointer;
-    font-size: var(--font-size);
+    font-size: 0.9em;
     padding: 10px 10px;
     position: absolute;
     right: 0;
@@ -39,7 +37,7 @@ input {
     border: 0;
     border-radius: 10px;
     font-family: 'Courier New', Courier, monospace;
-    font-size: var(--font-size);
+    font-size: 0.9em;
     padding: 5px 10px;
     width: 290px;
 }
@@ -140,4 +138,20 @@ input:focus {
     margin-bottom: 10px;
     margin-right: 10px;
     width: 40px;
+}
+
+@media screen and (max-width: 480px) {
+    button,
+    input {
+        font-size: 0.8em;
+    }
+
+    input {
+        width: 70%;
+    }
+
+    .main__wrapper {
+        padding: 15px 15px 0 15px;
+        width: 90%;
+    }
 }
