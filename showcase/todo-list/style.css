@@ -62,6 +62,9 @@ input:focus {
 .main__wrapper>div {
     margin-bottom: 25px;
 }
+.main__wrapper>div:nth-child(2) {
+    margin-top: -25px;
+}
 
 .input__wrapper {
     border: 1px solid lightgrey;
@@ -71,6 +74,12 @@ input:focus {
 }
 .input__wrapper.error {
     border: 1px solid #FFC0CB;
+}
+
+.list__wrapper {
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .list__container {
@@ -153,5 +162,9 @@ input:focus {
     .main__wrapper {
         padding: 15px 15px 0 15px;
         width: 90%;
+    }
+
+    .list__wrapper {
+        max-height: 110px;
     }
 }
