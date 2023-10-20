@@ -78,7 +78,7 @@ input:focus {
 }
 
 .list__wrapper {
-    max-height: 200px;
+    max-height: 225px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -175,9 +175,5 @@ input:focus {
     .main__wrapper {
         padding: 15px 15px 0 15px;
         width: 90%;
-    }
-
-    .list__wrapper {
-        max-height: 110px;
     }
 }
