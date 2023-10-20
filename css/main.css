@@ -147,7 +147,7 @@ body {
     grid-template-columns: auto;
     grid-template-rows: .6fr auto;
     grid-auto-columns: 1fr;
-    padding: 8rem 0rem;
+    padding: 6rem 0rem;
 }
 
 .showcase__wrapper {
@@ -164,7 +164,7 @@ body {
     margin-right: 10px;
     overflow: hidden;
     position: relative;
-    width: 30%;
+    width: min(70%, 450px);
 }
 .showcase__list img {
     height: 100%;
@@ -204,10 +204,14 @@ body {
         height: unset;
         grid-template-columns: minmax(auto, auto);
     }
+    
+    .about__container div:nth-child(2) {
+        display: none;
+    }
 
     .showcase__container {
-        height: unset;
-        padding: 2rem 0;
+        grid-template-rows: 0.7fr;
+        padding: 5rem 0;
     }
 
 }
@@ -229,6 +233,11 @@ body {
     
     .header__large {
         font-size: 2.65em;
+    }
+
+    .showcase__container {
+        height: unset;  
+        grid-template-rows: 0.3fr 0.3fr;
     }
 
     .showcase__wrapper {
