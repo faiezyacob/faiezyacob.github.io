@@ -100,7 +100,6 @@ i {
     height: auto;
     margin: auto;
     padding: 25px 25px 0 25px;
-    width: 450px;
 }
 
 .main__wrapper>div {
@@ -240,7 +239,6 @@ i {
 }
 
 .popup__footer {
-    /* float: right; */
     display: flex;
     justify-content: end;
     width: 100%;
