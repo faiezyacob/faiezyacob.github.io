@@ -1,7 +1,6 @@
 window.addEventListener('load', onLoad);
 
 function onLoad() {
-	const PARTICLE_SPEED = 0.5;
 	const PARTICLE_NUMBER = 100;
 
 	initClass_();
@@ -21,7 +20,6 @@ function onLoad() {
 	function initParticle_() {
 		const options = {
 			container: '.particle__container',
-			speed: PARTICLE_SPEED,
 			number: PARTICLE_NUMBER,
 		}
 
@@ -60,12 +58,11 @@ function onLoad() {
 
 		function animate__() {
 			for (let i = 0; i < particlesArr.length; i++) {
-				let curPos = particlesArr[i].top + options.speed;
+				let curPos = particlesArr[i].top + particlesArr[i].speed;
 				if (curPos > containerEl_.offsetHeight) {
-					let posX = Math.floor(Math.random() * (containerEl_.offsetWidth - 1 + 1) + 1);
+					let posX = Math.floor(getRandomValue(containerEl_.offsetWidth, 1));
 					curPos = -5;
 					particlesArr[i].el.style.left = posX + 'px';
-
 				}
 				particlesArr[i].el.style.top =  curPos + 'px';
 				particlesArr[i].top = curPos;
@@ -75,25 +72,34 @@ function onLoad() {
 
 		function generateParticles__() {
 			for (let i = 0; i < options.number; i++) {
-				let posX = Math.floor(Math.random() * (containerEl_.offsetWidth - 1 + 1) + 1);
-				let posY = Math.floor(Math.random() * (containerEl_.offsetHeight - 1 + 1) + 1);
+				let posX = Math.floor(getRandomValue(1, containerEl_.offsetWidth));
+				let posY = Math.floor(getRandomValue(1, containerEl_.offsetHeight));
 				let particle = document.createElement('div');
+				let randomSize = getRandomValue(5, 10);
 				let particleObj = {};
 
 				particle.style.backgroundColor = '#fff';
 				particle.style.borderRadius = '50%';
-				particle.style.height = '10px';
-				particle.style.width = '10px';
+				particle.style.height = randomSize + 'px';
+				particle.style.width = randomSize + 'px';
 				particle.style.position = 'absolute';
 				particle.style.left = posX + 'px';
 				particle.style.top = posY + 'px';
+				particle.style.opacity = randomSize < 7.5 ? 0.5 : 1;
+				particle.style.zIndex = randomSize < 7.5 ? 0 : 1;
 
 				particleObj.el = particle;
 				particleObj.top = posY;
+				// particleObj.speed = getRandomValue(0.5, 1);
+				particleObj.speed = randomSize < 7.5 ? 0.5 : 0.75;
 				particlesArr.push(particleObj);
 
  				containerEl_.appendChild(particle);
 			}
+		}
+
+		function getRandomValue(min, max) {
+			return Math.random() * (max - min) + min;
 		}
 
 		function setupStyle__() {
