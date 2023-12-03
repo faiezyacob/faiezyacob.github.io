@@ -20,8 +20,8 @@
 }
 
 a {
-    text-decoration: none;
     color: #000;
+    text-decoration: none;
 }
 
 button {}
@@ -54,6 +54,10 @@ section {
     margin: auto;
     height: 100%;
     width: 100%;
+}
+
+.header__small {
+    font-size: 1.5em;
 }
 
 .header__medium {
@@ -116,17 +120,23 @@ body {
     width: 100px;
     z-index: -1;
 }
-.navigation__container .navigation__list:nth-child(1):hover~.navigation__slider,
 .navigation__container .navigation__list:nth-child(1).active~.navigation__slider {
     left: 15px;
 }
-.navigation__container .navigation__list:nth-child(2):hover~.navigation__slider,
 .navigation__container .navigation__list:nth-child(2).active~.navigation__slider {
     left: 115px;
 }
-.navigation__container .navigation__list:nth-child(3):hover~.navigation__slider,
 .navigation__container .navigation__list:nth-child(3).active~.navigation__slider {
     left: 215px;
+}
+.navigation__container .navigation__list:nth-child(1):hover~.navigation__slider {
+    left: 15px !important;
+}
+.navigation__container .navigation__list:nth-child(2):hover~.navigation__slider {
+    left: 115px !important;
+}
+.navigation__container .navigation__list:nth-child(3):hover~.navigation__slider {
+    left: 215px !important;
 }
 
 .about__container {
@@ -176,11 +186,11 @@ body {
 }
 
 .showcase__list {
-    aspect-ratio: 1 / 1;
     box-shadow: var(--box__shadow);
     border: 2px solid var(--dark__color);
     border-radius: var(--border__radius);
     display: flex;
+    flex-direction: column;
     margin-left: 10px;
     margin-right: 10px;
     overflow: hidden;
@@ -188,8 +198,32 @@ body {
     width: min(70%, 350px);
 }
 .showcase__list img {
+    min-height: 200px;
     height: 100%;
     object-fit: cover;
+}
+
+.showcase__content {
+    padding: 15px 25px;
+    text-align: left;
+}
+.showcase__content a {
+    background-color: var(--blue__pastel);
+    border-radius: var(--border__radius);
+    display: block;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.showcase__stack {
+    display: flex;
+    padding-bottom: 10px;
+}
+.showcase__stack span {
+    display: block;
+    margin-right: 5px;
+    width: fit-content;
 }
 
 .contact__container {
