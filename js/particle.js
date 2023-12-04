@@ -40,7 +40,7 @@ function Particle(options) {
             let randomSize = getRandomValue_(options.min, options.max);
             let particleObj = {};
 
-            particle.style.backgroundColor = '#fff';
+            particle.style.backgroundColor = '#6f6f6f';
             particle.style.borderRadius = '50%';
             particle.style.height = randomSize + 'px';
             particle.style.width = randomSize + 'px';
@@ -48,7 +48,6 @@ function Particle(options) {
             particle.style.left = posX + 'px';
             particle.style.top = posY + 'px';
             particle.style.opacity = randomSize < ((options.min + options.max) / 2) ? 0.5 : 1;
-            particle.style.zIndex = randomSize < ((options.min + options.max) / 2) ? 0 : 1;
 
             particleObj.el = particle;
             particleObj.top = posY;
@@ -65,7 +64,9 @@ function Particle(options) {
     function setupContainerStyle_() {
         containerEl_.style.height = '100%';
         containerEl_.style.overflow = 'hidden';
-        containerEl_.style.position = 'absolute';
+        containerEl_.style.position = 'fixed';
+        containerEl_.style.top = 0;
         containerEl_.style.width = '100%';
+        containerEl_.style.zIndex = 0;
     }
 }

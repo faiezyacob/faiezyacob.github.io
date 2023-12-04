@@ -3,8 +3,10 @@ window.addEventListener('load', onLoad);
 function onLoad() {
 	const PARTICLE_SPEED = 0.5;
 	const PARTICLE_NUMBER = 100;
-	const PARTICLE_MAX_SIZE = 10;
-	const PARTICLE_MIN_SIZE = 5;
+	const PARTICLE_MAX_SIZE = 5;
+	const PARTICLE_MIN_SIZE = 1;
+
+	let particle_ = null;
 
 	initClass_();
 
@@ -71,13 +73,13 @@ function onLoad() {
 	function initParticle_() {
 		const options = {
 			container: '.particle__container',
-			number: PARTICLE_NUMBER,
+			number: window.innerWidth > 500 ? PARTICLE_NUMBER : PARTICLE_NUMBER / 2,
 			max: PARTICLE_MAX_SIZE,
 			min: PARTICLE_MIN_SIZE,
 			speed: PARTICLE_SPEED
 		}
 
-		new Particle(options)
+		particle_ = new Particle(options)
 	}
 	
 	function initScrollSpy_() {
@@ -90,7 +92,9 @@ function onLoad() {
 		scrollSpy('.navigation__container', options)
 	}
 
-	function onResize_() {}
+	function onResize_() {
+
+	}
 
 	function onScroll_() {}
 }
