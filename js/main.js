@@ -1,13 +1,6 @@
 window.addEventListener('load', onLoad);
 
 function onLoad() {
-	const PARTICLE_SPEED = 0.5;
-	const PARTICLE_NUMBER = 100;
-	const PARTICLE_MAX_SIZE = 5;
-	const PARTICLE_MIN_SIZE = 1;
-
-	let particle_ = null;
-
 	initClass_();
 
 	function initClass_() {
@@ -25,7 +18,7 @@ function onLoad() {
 
 	function generateShowcase_() {
 		let showcaseWrapper = document.querySelector('.showcase__wrapper');
-		
+
 		for (let i = 0; i < showcase.length; i++) {
 			let showcaseList = document.createElement('div');
 			showcaseList.classList.add('showcase__list');
@@ -71,17 +64,9 @@ function onLoad() {
 	}
 
 	function initParticle_() {
-		const options = {
-			container: '.particle__container',
-			number: window.innerWidth > 500 ? PARTICLE_NUMBER : PARTICLE_NUMBER / 2,
-			max: PARTICLE_MAX_SIZE,
-			min: PARTICLE_MIN_SIZE,
-			speed: PARTICLE_SPEED
-		}
-
-		particle_ = new Particle(options)
+		particlesJS.load('particles__container', 'js/particles.json', function () {});
 	}
-	
+
 	function initScrollSpy_() {
 		const options = {
 			sectionClass: 'section',
@@ -96,5 +81,5 @@ function onLoad() {
 
 	}
 
-	function onScroll_() {}
+	function onScroll_() { }
 }

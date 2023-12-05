@@ -9,7 +9,7 @@
     --primary__color: var(--darker__color);
     
     --border__radius: 10px;
-    --box__shadow: 10px 10px 0 var(--blue__pastel);
+    --box__shadow: 5px 5px 0 var(--blue__pastel);
 }
 
 *,
@@ -19,6 +19,11 @@
     margin: 0;
     padding: 0;
     text-transform: uppercase;
+}
+
+*::selection {
+    background-color: var(--blue__pastel);
+    color: var(--primary__color);
 }
 
 a {
@@ -66,6 +71,7 @@ section {
     font-size: 2.95em;
 }
 .header__large {
+    font-family: 'DM Sans', sans-serif;
     font-size: 4.5em;
 }
 .description__text {
@@ -88,7 +94,7 @@ section {
 
 html,
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     height: 100vh;
     scroll-behavior: smooth;
     width: 100vw;
@@ -154,6 +160,14 @@ body {
 }
 .about__container .description__text {
     max-width: 75%;
+}
+
+.particles__container {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 .showcase__container {
