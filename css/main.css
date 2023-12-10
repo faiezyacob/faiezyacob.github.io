@@ -195,7 +195,6 @@ body {
     border-radius: var(--border__radius);
     display: flex;
     flex-direction: column;
-    height: 500px;
     margin-left: 10px;
     margin-right: 10px;
     overflow: hidden;
@@ -203,7 +202,7 @@ body {
     width: min(70%, 350px);
 }
 .showcase__list img {
-    min-height: 200px;
+    max-height: 250px;
     height: 100%;
     object-fit: cover;
 }

@@ -64,7 +64,7 @@ function onLoad() {
 	}
 
 	function initParticle_() {
-		particlesJS.load('particles__container', 'js/particles.json', function () {});
+		particlesJS.load('particles__container', 'js/particles.json', function () { });
 	}
 
 	function initScrollSpy_() {
@@ -74,12 +74,10 @@ function onLoad() {
 			offset: 100
 		}
 
-		scrollSpy('.navigation__container', options)
+		scrollSpy('.navigation__container', options);
 	}
 
-	function onResize_() {
-
-	}
+	function onResize_() { }
 
 	function onScroll_() { }
 }
