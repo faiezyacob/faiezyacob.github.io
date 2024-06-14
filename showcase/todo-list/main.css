@@ -138,6 +138,11 @@ i {
 }
 
 
+.task__wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
 .list__container {
     background-color: var(--bg-color);
     border: 1px solid var(--bg-color-dark);
@@ -168,7 +173,7 @@ i {
     bottom: 0;
     color: var(--bg-color-dark);
     left: 25px;
-    padding: 5px 5px 5px 10px;
+    padding: 5px 5px 5px 0;
     position: absolute;
     width: 88%;
 }

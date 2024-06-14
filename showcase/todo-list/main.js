@@ -70,7 +70,6 @@ window.addEventListener('load', () => {
             return;
         }
 
-
         listChecked.innerHTML = '';
         listUnchecked.innerHTML = '';
 
@@ -94,8 +93,6 @@ window.addEventListener('load', () => {
                 listUnchecked.appendChild(listContainer);
                 pendingTask++;
             }
-
-            console.log((Date.now() - taskStorage[i].id) / 3600000)
         }
 
         taskWrapper.innerHTML = '<h4>You have ' + pendingTask + ' task(s) pending.</h4>';
@@ -105,31 +102,32 @@ window.addEventListener('load', () => {
     function getTimespan(timespan) {
         let difference = Date.now() - timespan;
 
+        if (difference / 86400000 >= 1) {
+            let curTimespan = Math.floor(difference / 86400000);
+            if (curTimespan / 365 >= 1) {
+                return Math.floor(curTimespan / 365) + ' years ago';
+            } 
+
+            if (curTimespan / 30 >= 1) {
+                return Math.floor(curTimespan / 30) + ' months ago';
+            } 
+
+            return curTimespan + ' day(s)';
+        }
+
         if (difference / 3600000 >= 1) {
             let curTimespan = Math.floor(difference / 3600000);
-            let curString = ' hours ago';
-            if (curTimespan <= 1) {
-                curString = ' hour ago';
-            }
-            return curTimespan + curString;
+            return curTimespan + ' hours ago';
         }
 
         if (difference / 60000 >= 1) {
             let curTimespan = Math.floor(difference / 60000);
-            let curString = ' minutes ago';
-            if (curTimespan <= 1) {
-                curString = ' minute ago';
-            }
-            return curTimespan + curString;
+            return curTimespan + ' minutes ago';
         }
 
         if (difference / 1000 >= 1) {
             let curTimespan = Math.floor(difference / 1000);
-            let curString = ' seconds ago';
-            if (curTimespan <= 1) {
-                curString = ' second ago';
-            }
-            return curTimespan + curString;
+            return curTimespan + ' seconds ago';
         }
 
         return 'recently';
