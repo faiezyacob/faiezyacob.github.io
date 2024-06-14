@@ -146,7 +146,9 @@ i {
     cursor: pointer;
     justify-content: space-between;
     margin-bottom: 10px;
-    padding: 0;
+    padding: 5px 10px;
+    padding-bottom: 40px;
+    position: relative;
     transition: all .5s ease-in-out;
 }
 .list__container:hover {
@@ -155,10 +157,20 @@ i {
 .list__container div {
     align-items: center;
     display: flex;
+    font-weight: bold;
     color: var(--bg-color-dark);
     padding-left: 25px;
     position: relative;
     width: 325px;
+}
+.list__container p {
+    border-top: 1px dashed var(--bg-color-dark);
+    bottom: 0;
+    color: var(--bg-color-dark);
+    left: 25px;
+    padding: 5px 5px 5px 10px;
+    position: absolute;
+    width: 88%;
 }
 .list__container div::before {
     border: 1px solid var(--bg-color-dark);
