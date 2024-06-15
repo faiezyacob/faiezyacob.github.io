@@ -270,12 +270,22 @@ body {
         padding: 4.75rem 2.5rem;
     }
 
+    .about__container .content__wrapper {
+        padding-top: 3.5rem;
+        max-width: unset;
+    }
+
+    .description__text {
+        font-size: 1.2em;
+    }
+
     .header__medium {
         font-size: 1.95em;
     }
     
     .header__large {
         font-size: 2.65em;
+        margin-bottom: 0;
     }
 
     .showcase__wrapper {
@@ -284,9 +294,5 @@ body {
 
     .showcase__list {
         width: 85%;
-    }
-
-    .description__text {
-        font-size: 1.2em;
-    }
+    }  
 }
