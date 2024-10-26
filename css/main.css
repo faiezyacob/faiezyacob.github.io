@@ -58,7 +58,6 @@ section {
     padding: 8rem;
     position: relative;
     margin: auto;
-    height: 100%;
     width: 100%;
     z-index: 0;
 }
@@ -147,7 +146,6 @@ body {
     align-items: center;
     background: var(--primary__color);
     display: flex;
-    height: 100%;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -228,6 +226,7 @@ body {
 .contact__container {
     background-color: var(--primary__color);
     display: flex;
+    min-height: 100%;
 }
 .contact__container > div {
     margin: auto;
