@@ -146,6 +146,7 @@ body {
     align-items: center;
     background: var(--primary__color);
     display: flex;
+    height: 100%;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -243,6 +244,10 @@ body {
 @media screen and (max-width: 991px) {
     section {
         padding: 6.5rem 5rem;
+    }
+
+    .about__container {
+        height: unset;
     }
 
     .about__container .description__text {
