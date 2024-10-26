@@ -153,9 +153,6 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-.about__container .content__wrapper {
-    max-width: 65%;
-}
 
 .particles__container {
     height: 100%;
@@ -260,8 +257,6 @@ body {
 
     .showcase__list {
         margin-bottom: 25px;
-        margin-right: auto;
-        margin-left: auto;
     }
 }
 
