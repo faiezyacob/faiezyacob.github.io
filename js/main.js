@@ -1,6 +1,8 @@
 window.addEventListener('load', onLoad);
 
 function onLoad() {
+	let showcases = null;
+
 	initClass_();
 
 	function initClass_() {
@@ -8,7 +10,7 @@ function onLoad() {
 		initScrollSpy_();
 		initParticle_();
 		onScroll_();
-		bindEvents_();
+		bindEvents_();		
 	}
 
 	function bindEvents_() {
